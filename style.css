@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Font-Awesome';
+    src: url(./Assets/webfonts/fa-brands-400.woff2) format('woff2');
+    font-weight: brands;
+}
+@font-face {
+    font-family:'Font-Awesome' ;
+    src: url(./Assets/webfonts/fa-regular-400.woff2) format('woff2');
+    font-weight: regular;
+}
+@font-face {
+    font-family:'Font-Awesome' ;
+    src: url(./Assets/webfonts/fa-solid-900.woff2) format('woff2');
+    font-weight: solid;
+}
+@font-face {
+    font-family:'Font-Awesome' ;
+    src: url(./Assets/webfonts/fa-v4compatibility.woff2) format('woff2');
+    font-weight: compatibility;
+}
