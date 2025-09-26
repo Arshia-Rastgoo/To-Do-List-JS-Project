@@ -16,7 +16,7 @@ function addnewjob() {
 
     const addingItem = createjobelemnt(jobtext);
     MainDivs.appendChild(addingItem);
-    newjob.value = "";
+    newjobInput.value = "";
     updateAndSaveJobs();
 
 }
@@ -46,15 +46,15 @@ function createjobelemnt(jobtext) {
 
     //making delet button
     var deletebutton = document.createElement('button');
-    editbutton.className = 'del-button';
+    deletebutton.className = 'del-button';
     jobitem.appendChild(deletebutton);
 
     //making icon for delet button
     var DeleteIcon = document.createElement('i');
     DeleteIcon.className = "fa-solid fa-trash";
-    deletbutton.appendChild(DeleteIcon)
+    deletebutton.appendChild(DeleteIcon)
 
-    deletbutton.onclick = function () {
+    deletebutton.onclick = function () {
         deleteDiv(jobitem);
     };
     return jobitem;
@@ -70,23 +70,35 @@ function edittask(jobitem) {
         updateAndSaveJobs();
     }
 }
+
 function deleteDiv(jobitem) {
-    const deletee = prompt("Are you sure you want delete this task?!")
-    if (deletee) {
+    const confirmed = confirm("Are you sure you want delete this task?!");
+
+    if (confirmed) {
         jobitem.remove();
         updateAndSaveJobs();
     }
-
 }
-function updateAndSaveJobs() {
+
+function updateAndSaveJobs(jobtext) {
     const task_spans_all = document.querySelectorAll('.job-items span')
     var spanArrey = [];
     for (let i = 0; i < task_spans_all.length; i++) {
-     spanArrey.push(task_spans_all[i].textContent)
+        spanArrey.push(task_spans_all[i].textContent)
     }
-    localStorage.setItem("spanArrey",spanArrey.join(','));
-}
-function showTasks(){
-    
+    localStorage.setItem("spanArrey", spanArrey.join(','));
 }
 
+function showTasks() {
+    const savedtasks = localStorage.getItem('spanArrey');
+    if (savedtasks) {
+        const tasks = savedtasks.split(',')
+        for (let i = 0; i < tasks.length; i++) {
+            const jobtext = tasks[i];
+            const recreating_tasks = createjobelemnt(jobtext);
+            MainDivs.appendChild(recreating_tasks);
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded',showTasks);
