@@ -1,20 +1,77 @@
 @font-face {
-    font-family: 'Font-Awesome';
+    font-family: 'FontAwesome';
     src: url(./Assets/webfonts/fa-brands-400.woff2) format('woff2');
-    font-weight: brands;
+    font-weight: 400;
 }
 @font-face {
-    font-family:'Font-Awesome' ;
+    font-family:'FontAwesome' ;
     src: url(./Assets/webfonts/fa-regular-400.woff2) format('woff2');
-    font-weight: regular;
+    font-weight: 400;
 }
 @font-face {
-    font-family:'Font-Awesome' ;
+    font-family:'FontAwesome' ;
     src: url(./Assets/webfonts/fa-solid-900.woff2) format('woff2');
     font-weight: solid;
 }
 @font-face {
-    font-family:'Font-Awesome' ;
+    font-family:'FontAwesome' ;
     src: url(./Assets/webfonts/fa-v4compatibility.woff2) format('woff2');
-    font-weight: compatibility;
+    font-weight: 400;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    direction: rtl;
+    font-family: 'FontAwesome';
+
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right,#25375b,#2d517a);
+}
+header{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    padding-top: 50px;
+
+}
+header h1{
+  /* font-size: 30px; */
+  color:rgb(210, 208, 208);
+}
+.input{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+.input input{
+    width: 360px;
+    height:38px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 8px;
+    margin-left: 10px;
+    font-family: 'FontAwesome';
+    background-color: rgb(237, 237, 237);
+    direction: ltr;
+}
+.input button{
+    width: 50px;
+    padding:8px ;
+    border-radius: 8px;
+    font-size: 16px;
+    color: rgb(44, 36, 36);
+}
+.input button:hover{
+    cursor: pointer;
+    color: aquamarine;
+    background-color: #25375b;
+    transition: all 0.3s ease;
 }
