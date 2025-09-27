@@ -119,6 +119,9 @@ header h1{
     height: 50px;
     border-radius: 8px;
     font-family:'FontAwesome';
+    white-space: pre-line;
+    overflow:visible;
+    text-overflow: ellipsis;
 }
 .job-items:nth-child(odd){
     background: rgb(122, 154, 202);
@@ -141,6 +144,8 @@ header h1{
     /* min-width: 200px; */
     flex-basis: 200px;
     color: rgb(219, 217, 217);
+    white-space: pre-line;
+    word-break: break-all;
 }
 .job-items .edit-button{
  flex-grow: 0.5;
@@ -186,12 +191,17 @@ header h1{
     display: flex;         
     align-items: center;
     gap: 6px;
+    white-space: normal;
+    overflow: scroll;
   }
 
   .job-items span {
     flex-grow: 1;
     flex-basis: auto;
     min-width: 0;
+    white-space: normal;
+    word-break: break-word;         
+    flex: 1 1 auto;
   }
 
   .job-items .edit-button,
@@ -204,30 +214,20 @@ header h1{
     border-radius: 6px;
     border: 2px solid rgb(11, 13, 14);
     /* background-color: inherit;
-    color: inherit; */
-
-    
+    color: inherit; */  
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
-   
     flex: 0 0 auto;
     text-align: center;
   }
-  .job-items span {
-    white-space: normal;
-    word-break: break-word;         
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-
   
-  .job-items { 
+  
+  /* .job-items { 
     display: flex;
     align-items: center;
     justify-content: flex-start;
-  }
+  } */
 
   @media (max-width: 420px) {
     .job-items .edit-button,
@@ -238,7 +238,7 @@ header h1{
     }
   }
    .job-items span {
-    white-space: normal;          
+    white-space:normal;          
     word-break: break-word;       
     flex: 1 1 auto;
     min-width: 0;
