@@ -155,7 +155,7 @@ header h1{
  flex-grow: 0.5;
  border-radius: 8px;
  margin-left: 10px;
- padding: 1.5px ;
+ padding: 2px ;
  flex-basis: 20px;
  font-size: 16px;
 }
@@ -173,48 +173,87 @@ header h1{
 } */
 @media (max-width: 768px) {
   /* کل ساختار اصلی را با عرض کمتر همسان‌سازی می‌کند */
-  
   .main-part {
     margin-top: 30px;
-    
     padding: 0 14px;
   }
 
   /* کاهش عرض و سماجتِ محتوای داخلی */
   .job-items {
-     width: 90%;        /*  استفاده از عرض کامل والد */
-    padding: 8px 10px;      /* فضای درون‌دیویی مناسب برای کوچک‌شدن */
-    height: auto;           /* ارتفاع خودبه‌خود براساس محتوا */
-    font-size: 14px;          /* کاهش سایز فونت برای مدل موبایل */
+    width: 90%;        /* یا 100% اگر می‌خواهید به تمام عرض والد برسد */
+    padding: 8px 10px;      
+    height: auto;           
+    font-size: 14px;          
+    display: flex;          /* مطمئن شوید که دکمه‌ها در خط باشند */
+    align-items: center;
+    gap: 6px;
   }
 
   /* تیکه‌های رنگی بسته به وضعیتِ زوج/فرد بودن همچنان حفظ شوند اما منعطف‌تر شوند */
   .job-items span {
     flex-grow: 1;
     flex-basis: auto;
+    min-width: 0;
   }
 
+  /* دکمه‌های ادیت و دیلیت با اندازه ثابت و رفتار پایدار */
   .job-items .edit-button,
   .job-items .del-button {
-    font-size: 14px;
-    padding: 6px 6px;
-    /* به‌صرفه اجازه می‌دهیم در راستای RTL به‌درستی نمایش یابد */
+    width: 64px;               /* عرض ثابت برای هر دو دکمه */
+    height: 34px;               /* ارتفاع ثابت (می‌تواند تغییر کند) */
+    font-size: 14px;            
+    padding: 0;                  /* برای حفظ عرض ثابت */
+    max-width: 64px;             /* تضمین حداکثر عرض ثابت */
+    border-radius: 6px;
+    border: 2px solid rgb(11, 13, 14);
+    /* background-color: inherit;
+    color: inherit; */
+
+    /* جلوگیری از گسترش متن به دو خط یا خروج از دکمه */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* جلوگیری از رشد ناخواسته در RTL */
+    flex: 0 0 auto;
+    text-align: center;
+  }
+  .job-items span {
+    white-space: normal;            /* اجازه شکست خطوط در span */
+    word-break: break-word;         /* کلمه را در صورت نیاز بشکند */
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
-  /* برای موبایل‌های خیلی کوچک، خطوط و فاصله‌های عمودی را کاهش می‌دهد */
+  /* مطمئن شوید که فضای بین دکمه‌ها مشخص است */
+  .job-items { 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  /* برای موبایل‌های خیلی کوچک (اندازه‌های پایین‌تر) اندازه را کمی کمتر کنید */
   @media (max-width: 420px) {
-    .job-items {
-      padding: 6px 8px;
-      margin-left: 50
-    }
     .job-items .edit-button,
     .job-items .del-button {
-      padding: 4px 6px;
+      width: 58px;
+      height: 32px;
+      font-size: 13px;
     }
-    .input {
+  }
+   .job-items span {
+    white-space: normal;            /* اجازه شکست خطوط در span */
+    word-break: break-word;         /* کلمه را در صورت نیاز بشکند */
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* باقی تنظیمات INPUT ها و header برای موبایل */
+  .input {
     flex-direction: column;
     align-items: stretch;
   }
+
   header h1 { 
     white-space: nowrap;
     overflow: hidden;
@@ -234,12 +273,4 @@ header h1{
     width: 100%;
     margin-top: 8px;
   }
-  }
-
-  /* مطمئن شوید که ورودی‌های فیلدها هم به‌خوبی در موبایل نمایش داده شوند */
-  
-
-  
-
-  
 }
